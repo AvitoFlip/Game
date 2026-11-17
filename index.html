@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AvitoTech — игра про перепродажу телефонов</title>
+<meta name="description" id="md" content="Бесплатная игра для Android про перепродажу телефонов: открывай кейсы, чини, прошивай и выгодно продавай.">
+<meta name="theme-color" id="tc" content="#08130e">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AvitoTech">
+<meta property="og:title" id="ogt" content="AvitoTech — игра про перепродажу телефонов">
+<meta property="og:description" id="ogd" content="Бесплатная игра для Android про перепродажу телефонов: открывай кейсы, чини, прошивай и выгодно продавай.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%235cf0a2'/%3E%3Crect x='20' y='11' width='24' height='42' rx='6' fill='none' stroke='%2304271a' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AvitoTech","operatingSystem":"Android","applicationCategory":"GameApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},"downloadUrl":"https://github.com/AvitoFlip/Game/releases/tag/v1.1","softwareVersion":"1.1","inLanguage":["ru","en","uk","es"]}</script>
+<style>
+:root{color-scheme:dark;--bg:#08130e;--tx:#eaf7f0;--mu:#9ab8a8;--pri:#5cf0a2;--onpri:#04271a;--sec:#173a2a;--onsec:#9bf5c6;--card:#ffffff0d;--chip:#ffffff12;--line:#ffffff1c;--glow:#1fd07c;--orb:#16a560;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{color-scheme:light;--bg:#f2fbf6;--tx:#0e2a1d;--mu:#4d6d5d;--pri:#10a35f;--onpri:#fff;--sec:#d1f3df;--onsec:#0a5a35;--card:#ffffffa8;--chip:#ffffffb8;--line:#0000001a;--glow:#35d08a;--orb:#7be0ac}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+a,button,summary{outline:none;-webkit-touch-callout:none}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--pri);outline-offset:3px}
+.btn,.chip,.tg button,.lm button{user-select:none;-webkit-user-select:none}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font-family:Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100%;overflow-x:hidden;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;transition:background .35s,color .35s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.skip{position:absolute;left:16px;top:-80px;z-index:60;padding:10px 16px;border-radius:12px;background:var(--pri);color:var(--onpri);font-weight:800;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
+.orbs{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.orbs i{position:absolute;border-radius:50%;background:var(--orb);filter:blur(70px);opacity:.38;will-change:transform;animation:drift 18s ease-in-out infinite alternate}
+.orbs i:nth-child(1){width:340px;height:340px;left:-120px;top:40px}
+.orbs i:nth-child(2){width:300px;height:300px;right:-110px;top:380px;animation-duration:23s;background:var(--glow);opacity:.26}
+.orbs i:nth-child(3){width:380px;height:380px;left:20%;bottom:-160px;animation-duration:27s}
+@keyframes drift{to{transform:translate(50px,-70px) scale(1.18)}}
+.w{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:0 16px 120px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;margin:0 -16px;padding-inline:16px;background:color-mix(in srgb,var(--bg) 55%,transparent);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line)}
+.tg{display:flex;background:var(--chip);border:1px solid var(--line);border-radius:22px;padding:2px}
+.tg button{all:unset;cursor:pointer;width:42px;height:38px;border-radius:19px;display:grid;place-items:center;color:var(--mu);transition:background .25s,color .25s,box-shadow .25s}
+.tg button:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+.tg button.on{background:var(--pri);color:var(--onpri);box-shadow:0 0 18px color-mix(in srgb,var(--glow) 70%,transparent)}
+.lw{position:relative}
+.chip{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:21px;background:var(--chip);border:1px solid var(--line);color:var(--tx);font-weight:700;font-size:15px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.chip:focus-visible{outline:2px solid var(--pri);outline-offset:3px}
+.chip svg:last-child{width:16px;transition:transform .25s}.lw.open .chip svg:last-child{transform:rotate(180deg)}
+.lm{position:absolute;right:0;top:calc(100% + 8px);min-width:190px;padding:6px;border-radius:20px;background:color-mix(in srgb,var(--bg) 92%,transparent);border:1px solid var(--line);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);box-shadow:0 18px 50px #0006,0 0 40px color-mix(in srgb,var(--glow) 18%,transparent);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.96);transform-origin:top right;transition:opacity .2s,transform .2s,visibility .2s}
+.lw.open .lm{opacity:1;visibility:visible;transform:none}
+.lm button{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;box-sizing:border-box;padding:12px 14px;border-radius:14px;font-weight:700;font-size:15px;transition:background .15s}
+.lm button:hover,.lm button:focus-visible{background:var(--chip)}.lm button small{color:var(--mu);font-weight:700}
+.lm button.on{background:var(--sec);color:var(--onsec)}.lm button.on small{color:var(--onsec)}
+svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hero{text-align:center;padding:44px 0 30px}
+.logo{display:inline-flex;align-items:center;gap:12px;color:var(--pri);font-weight:800;font-size:28px;letter-spacing:-.01em}
+.logo i{width:42px;height:42px;border-radius:14px;background:var(--pri);color:var(--onpri);display:grid;place-items:center;box-shadow:0 0 26px color-mix(in srgb,var(--glow) 65%,transparent)}
+.logo i svg{width:24px;height:24px}
+.ph{position:relative;width:170px;height:210px;margin:30px auto 6px}
+.ph::before{content:"";position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--glow) 55%,transparent),transparent);animation:pu 3.2s ease-in-out infinite}
+.ph>svg{position:relative;width:100%;height:100%;stroke:none}
+.tagp{position:absolute;right:-34px;top:36px;padding:8px 14px;border-radius:14px;background:var(--pri);color:var(--onpri);font-weight:800;font-size:15px;white-space:nowrap;box-shadow:0 0 24px color-mix(in srgb,var(--glow) 70%,transparent);animation:fl 4s ease-in-out -1.5s infinite}
+.tagp.l{right:auto;left:-40px;top:128px;background:var(--card);color:var(--tx);border:1px solid var(--line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:none;animation-delay:-3s}
+@keyframes fl{50%{transform:translateY(-12px)}}@keyframes pu{50%{transform:scale(1.15);opacity:.65}}
+.bd{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 24px}
+.bd span{padding:9px 16px;border-radius:14px;font-weight:700;font-size:15px;background:var(--chip);border:1px solid var(--line);color:var(--mu);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.bd .a{background:var(--pri);color:var(--onpri);border-color:transparent;box-shadow:0 0 20px color-mix(in srgb,var(--glow) 45%,transparent)}.bd span:nth-child(n+2){background:color-mix(in srgb,var(--pri) 16%,transparent);color:var(--onsec);border:1px solid color-mix(in srgb,var(--pri) 45%,transparent);box-shadow:0 0 18px color-mix(in srgb,var(--glow) 42%,transparent),inset 0 0 12px color-mix(in srgb,var(--glow) 14%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3)}
+h1{font-size:clamp(42px,12.5vw,66px);line-height:1.02;font-weight:800;letter-spacing:-.035em}
+h1 span{display:block;padding:0 .04em .18em;margin-bottom:-.12em;background:linear-gradient(100deg,var(--tx) 40%,var(--pri));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h1 span:nth-child(3){background:linear-gradient(100deg,var(--pri),var(--glow));-webkit-background-clip:text;background-clip:text}
+.sub{color:var(--mu);font-size:17px;line-height:1.45;margin:18px auto 28px;max-width:30em;font-weight:500}
+.btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:12px;height:68px;border-radius:34px;font:700 18px Manrope,system-ui,sans-serif;text-decoration:none;margin-top:12px;transition:transform .2s,box-shadow .3s}
+.btn:active{transform:scale(.97)}
+.p{background:var(--pri);color:var(--onpri);box-shadow:0 0 0 1px color-mix(in srgb,var(--pri) 60%,transparent),0 12px 44px color-mix(in srgb,var(--glow) 50%,transparent)}
+.p:hover{box-shadow:0 0 0 1px var(--pri),0 14px 60px color-mix(in srgb,var(--glow) 75%,transparent)}
+.p::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-90px;background:linear-gradient(100deg,transparent,#ffffff70,transparent);transform:skewX(-20deg);animation:sh 4.5s ease-in-out infinite}
+@keyframes sh{0%,60%{left:-90px}100%{left:120%}}
+.s{background:var(--card);color:var(--tx);border:1px solid var(--line);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.nt{color:var(--mu);font-size:14px;font-weight:700;margin-top:14px;letter-spacing:.01em}
+h2{font-size:28px;letter-spacing:-.02em;margin:46px 0 12px;text-align:center;padding-bottom:.2em;background:linear-gradient(100deg,var(--tx) 50%,var(--pri));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.g{display:grid;gap:12px}
+.c{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:20px;display:flex;gap:16px;align-items:flex-start;-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);transition:transform .3s,border-color .3s,box-shadow .3s}
+.c::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--glow) 30%,transparent),transparent 62%);opacity:0;transition:opacity .3s;pointer-events:none}
+.c>*{position:relative}
+@media (hover:hover){.c:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--pri) 55%,transparent);box-shadow:0 14px 44px color-mix(in srgb,var(--glow) 24%,transparent)}.c:hover::before{opacity:1}}
+.c i{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;flex:none;background:var(--pri);color:var(--onpri);box-shadow:0 0 22px color-mix(in srgb,var(--glow) 55%,transparent)}
+.c:nth-child(even) i{background:var(--sec);color:var(--onsec);box-shadow:0 0 22px color-mix(in srgb,var(--glow) 30%,transparent)}
+.c b{display:block;font-size:19px;margin-bottom:4px}.c p{color:var(--mu);line-height:1.45;font-size:15px;font-weight:500}
+.cta{margin-top:34px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:30px;padding:28px 20px;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 0 60px color-mix(in srgb,var(--glow) 16%,transparent)}
+.cta h3{font-size:24px;letter-spacing:-.02em}.cta p{color:var(--mu);margin:8px 0 6px;font-weight:500}
+footer{text-align:center;color:var(--mu);font-size:14px;margin-top:30px;line-height:1.6}footer small{display:block;font-size:12.5px;opacity:.8}footer a{color:var(--pri);text-decoration:none;font-weight:700}.lk{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px 0 0;animation:up .8s cubic-bezier(.2,.8,.2,1) both}.lk a{padding:9px 16px;border-radius:14px;font-weight:700;font-size:14px;color:var(--onsec);text-decoration:none;background:color-mix(in srgb,var(--pri) 16%,transparent);border:1px solid color-mix(in srgb,var(--pri) 45%,transparent);box-shadow:0 0 18px color-mix(in srgb,var(--glow) 42%,transparent),inset 0 0 12px color-mix(in srgb,var(--glow) 14%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);transition:box-shadow .3s,transform .2s,border-color .3s}.lk a:hover{border-color:var(--pri);box-shadow:0 0 26px color-mix(in srgb,var(--glow) 65%,transparent),inset 0 0 14px color-mix(in srgb,var(--glow) 22%,transparent)}.lk a:active{transform:scale(.97)}
+.dots{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(color-mix(in srgb,var(--pri) 45%,transparent) 1px,transparent 1.3px);background-size:26px 26px;-webkit-mask-image:radial-gradient(75% 50% at 50% 22%,#000,transparent);mask-image:radial-gradient(75% 50% at 50% 22%,#000,transparent);opacity:.45}
+.coin{position:absolute;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:16px;color:var(--onpri);background:radial-gradient(circle at 30% 28%,#c9ffe3,var(--pri));box-shadow:0 0 20px color-mix(in srgb,var(--glow) 70%,transparent);animation:fl 4s ease-in-out infinite}
+.k1{left:-6px;top:6px;animation-delay:-1s}.k2{right:-18px;bottom:16px;width:22px;height:22px;font-size:12px;animation-delay:-2.4s}
+.mq{overflow:hidden;margin:8px -16px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.mq div{display:flex;gap:10px;width:max-content;animation:mq 30s linear infinite}
+.mq span{padding:10px 18px;border-radius:16px;background:var(--chip);border:1px solid var(--line);color:var(--mu);font-weight:700;font-size:15px;white-space:nowrap;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.st{position:relative;display:grid;gap:22px}
+.st::before{content:"";position:absolute;left:21px;top:24px;bottom:24px;width:2px;background:linear-gradient(var(--pri),color-mix(in srgb,var(--pri) 10%,transparent));opacity:.55}
+.stp{position:relative;display:flex;gap:16px;align-items:center}
+.stp .n{width:44px;height:44px;border-radius:50%;background:var(--pri);color:var(--onpri);font-weight:800;font-size:19px;display:grid;place-items:center;flex:none;box-shadow:0 0 0 6px color-mix(in srgb,var(--pri) 16%,transparent),0 0 26px color-mix(in srgb,var(--glow) 60%,transparent)}
+.stp b{display:block;font-size:20px;margin-bottom:2px}.stp p{color:var(--mu);font-weight:500;line-height:1.45;font-size:15px}
+.tu{display:grid;gap:10px}
+.tu details{background:var(--card);border:1px solid var(--line);border-radius:22px;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);transition:border-color .3s,box-shadow .3s}
+.tu details[open]{border-color:color-mix(in srgb,var(--pri) 55%,transparent);box-shadow:0 10px 40px color-mix(in srgb,var(--glow) 20%,transparent)}
+.tu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:22px}.tu summary::-webkit-details-marker{display:none}
+.tu .n{width:34px;height:34px;border-radius:12px;background:var(--sec);color:var(--onsec);font-weight:800;display:grid;place-items:center;flex:none;transition:background .3s,color .3s}
+.tu details[open] .n{background:var(--pri);color:var(--onpri)}
+.tu summary b{flex:1;font-size:17px}.tu summary svg{width:20px;color:var(--mu);transition:transform .3s}.tu details[open] summary svg{transform:rotate(180deg)}
+.tu p{padding:0 18px 18px 66px;color:var(--mu);line-height:1.5;font-weight:500;font-size:15px;animation:up .45s both}
+.fa{display:grid;gap:10px}
+.fa details{background:var(--card);border:1px solid var(--line);border-radius:20px;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);transition:border-color .3s}
+.fa details[open]{border-color:color-mix(in srgb,var(--pri) 45%,transparent)}
+.fa summary{list-style:none;cursor:pointer;padding:16px 18px;font-weight:700;display:flex;justify-content:space-between;gap:12px;align-items:center;border-radius:20px}.fa summary::-webkit-details-marker{display:none}
+.fa summary svg{width:20px;color:var(--mu);transition:transform .3s}.fa details[open] summary svg{transform:rotate(180deg)}
+.fa p{padding:0 18px 16px;color:var(--mu);line-height:1.5;font-weight:500;font-size:15px;animation:up .45s both}
+.pg{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;background:var(--pri);z-index:40;box-shadow:0 0 14px var(--glow)}
+.sb{position:fixed;left:0;right:0;bottom:0;z-index:25;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;pointer-events:none;transform:translateY(120%);visibility:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),visibility .4s}
+.sb.on{transform:none;visibility:visible}.sb .btn{pointer-events:auto;margin:0;width:100%;max-width:528px;height:58px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1)}.rv.in{opacity:1;transform:none}
+.c.rv{transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.tu details.rv,.fa details.rv{transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.hero>*{animation:up .8s cubic-bezier(.2,.8,.2,1) both}.hero>:nth-child(2){animation-delay:.08s}.hero>:nth-child(3){animation-delay:.16s}.hero>:nth-child(4){animation-delay:.24s}.hero>:nth-child(5){animation-delay:.32s}.hero>:nth-child(6){animation-delay:.4s}.hero>:nth-child(7){animation-delay:.48s}
+.hero>.ph{animation:up .8s .08s cubic-bezier(.2,.8,.2,1) both,fl 5s 1s ease-in-out infinite}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+noscript .ns{position:relative;z-index:2;text-align:center;padding:14px;color:var(--mu)}
+@media (max-width:360px){.tagp{right:-14px}.tagp.l{left:-14px}.logo{font-size:24px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#features" data-i="skip">К возможностям</a>
+<div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div><div class="dots" aria-hidden="true"></div>
+<div class="w">
+  <div class="top">
+    <div class="tg" role="group" aria-label="Theme">
+      <button id="tl" type="button" aria-label="Light" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></button>
+      <button id="td" type="button" aria-label="Dark" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    </div>
+    <div class="lw" id="lw">
+      <button class="chip" id="lb" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span id="lc">RU</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lm" id="lm" role="menu"></div>
+    </div>
+  </div>
+
+  <nav class="lk" aria-label="Legal"><a href="https://avitoflip.github.io/Opp2/" target="_blank" rel="noopener" data-i="pp">Политика конфиденциальности</a><a href="https://avitoflip.github.io/Opp/" target="_blank" rel="noopener" data-i="tm">Условия использования</a></nav>
+  <main>
+  <section class="hero">
+    <div class="logo"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></i>AvitoTech</div>
+    <div class="ph" aria-hidden="true">
+      <svg viewBox="0 0 170 210"><defs><linearGradient id="sc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5cf0a2"/><stop offset="1" stop-color="#0d7a48"/></linearGradient></defs><rect x="30" y="6" width="110" height="198" rx="22" fill="#0b1712"/><rect x="36" y="12" width="98" height="186" rx="17" fill="#10281c"/><rect x="68" y="18" width="34" height="7" rx="3.5" fill="#0b1712"/><rect x="44" y="36" width="82" height="72" rx="12" fill="url(#sc)"/><rect x="73" y="48" width="24" height="48" rx="6" fill="#07120c"/><rect x="76" y="52" width="18" height="38" rx="3.5" fill="#9bf5c6"/><rect x="44" y="118" width="64" height="8" rx="4" fill="#ffffff66"/><rect x="44" y="132" width="40" height="6" rx="3" fill="#ffffff30"/><rect x="44" y="146" width="30" height="12" rx="6" fill="#5cf0a2" opacity=".35"/><rect x="44" y="168" width="82" height="22" rx="11" fill="#5cf0a2"/></svg>
+      <div class="coin k1">₽</div><div class="coin k2">₽</div><div class="tagp">10 000 ₽</div><div class="tagp l">+2 400 ₽</div>
+    </div>
+    <div class="bd"><span class="a" data-i="b1">Бесплатно</span><span class="b" data-i="b2">Android</span><span data-i="b3">Перепродажа телефонов</span></div>
+    <h1><span data-i="h1">Купи.</span><span data-i="h2">Почини.</span><span data-i="h3">Продай.</span></h1>
+    <p class="sub" data-i="sub">Игра про флип телефонов: открывай кейсы, прошивай, паяй платы и выигрывай лоты на аукционе — без вложений.</p>
+    <div>
+      <a class="btn p" href="#" data-go rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-i="play">Скачать APK</span></a>
+      <a class="btn s" href="#features"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4zM20 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/></svg><span data-i="feat">Возможности</span></a>
+      <p class="nt" data-i="nt">Версия 1.0 · Android · бесплатно</p>
+    </div>
+  </section>
+
+  <div class="mq" aria-hidden="true"><div id="mq"></div></div>
+  <h2 class="rv" data-i="hw">Как это работает</h2>
+  <div class="st">
+    <div class="stp rv"><span class="n">1</span><div><b data-i="s1t">Купи</b><p data-i="s1d">Открывай кейсы и выкупай лоты на аукционе.</p></div></div>
+    <div class="stp rv"><span class="n">2</span><div><b data-i="s2t">Почини</b><p data-i="s2d">Прошивай и паяй, чтобы поднять цену.</p></div></div>
+    <div class="stp rv"><span class="n">3</span><div><b data-i="s3t">Продай</b><p data-i="s3d">Выставляй объявления и торгуйся с покупателями.</p></div></div>
+  </div>
+
+  <h2 class="rv" data-i="tuh">Обучение</h2>
+  <div class="tu">
+    <details class="rv" open><summary><span class="n">1</span><b data-i="t1">Установи APK</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="d1">Скачай файл, разреши установку из неизвестных источников и открой игру.</p></details>
+    <details class="rv"><summary><span class="n">2</span><b data-i="t2">Стартовый капитал</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="d2">У тебя 20 000 ₽. Дни идут сами, а кнопка «След. день» перематывает время.</p></details>
+    <details class="rv"><summary><span class="n">3</span><b data-i="t3">Купи выгодно</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="d3">В объявлениях выбирай телефоны дешевле рынка и смотри на дефекты.</p></details>
+    <details class="rv"><summary><span class="n">4</span><b data-i="t4">Почини в мастерской</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="d4">Проверь IMEI, прошей или запаяй плату: рабочий телефон продаётся дороже.</p></details>
+    <details class="rv"><summary><span class="n">5</span><b data-i="t5">Продай в диалогах</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="d5">Торгуйся с покупателями и не называй коды из СМС — так действуют мошенники.</p></details>
+    <details class="rv"><summary><span class="n">6</span><b data-i="t6">Следи за деньгами</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="d6">Каждый день списываются аренда и налоги. Если денег не хватает ни на один телефон, наступает банкротство.</p></details>
+    <details class="rv"><summary><span class="n">7</span><b data-i="t7">Расти дальше</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="d7">Кейсы, кликер, бизнес, блог и задания дают бонусы и ускоряют рост.</p></details>
+  </div>
+
+  <h2 id="features" class="rv" data-i="fh">Что внутри</h2>
+  <div class="g">
+    <div class="c rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9"/></svg></i><div><b data-i="c1t">Кейсы</b><p data-i="c1d">Открывай кейсы с телефонами и находи редкие модели с хорошей наценкой.</p></div></div>
+    <div class="c rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></svg></i><div><b data-i="c2t">Прошивка</b><p data-i="c2d">Возвращай «кирпичи» к жизни: прошитый аппарат стоит заметно дороже.</p></div></div>
+    <div class="c rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg></i><div><b data-i="c3t">Пайка плат</b><p data-i="c3d">Чини платы паяльником в мастерской и проверяй IMEI перед продажей.</p></div></div>
+    <div class="c rv"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-3 3-6-6zM11 7l-7 7 3 3 7-7M3 21h12"/></svg></i><div><b data-i="c4t">Аукцион</b><p data-i="c4d">Выкупай лоты на торгах, ремонтируй и перепродавай покупателям.</p></div></div>
+  </div>
+
+  <h2 class="rv" data-i="fq">Вопросы</h2>
+  <div class="fa">
+    <details class="rv"><summary><span data-i="q1">Игра правда бесплатная?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="a1">Да. Скачивание и игра без вложений.</p></details>
+    <details class="rv"><summary><span data-i="q2">Телефон ругается на установку?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="a2">Это обычно для APK не из магазина. Разреши установку из этого источника в настройках и повтори.</p></details>
+    <details class="rv"><summary><span data-i="q3">Как обновить игру?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="a3">Скачай новую версию кнопкой на этой странице и установи поверх старой.</p></details>
+    <details class="rv"><summary><span data-i="q4">Безопасно ли ставить APK?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><p data-i="a4">Ставь файл только с этой страницы. Не принимай APK от посторонних и не открывай ссылки из чужих сообщений.</p></details>
+  </div>
+
+  <div class="cta rv">
+    <h3 data-i="ct">Начни с первого телефона</h3>
+    <p data-i="cp">Бесплатно и без вложений.</p>
+    <a class="btn p" href="#" data-go rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-i="co">Скачать APK</span></a>
+  </div>
+  </main>
+  <footer>© AvitoTech<small data-i="fo">Неофициальная игра, не связана с компанией Avito.</small></footer>
+</div>
+<noscript><div class="ns">JavaScript is required for language and theme switching. / Для смены языка и темы нужен JavaScript.</div></noscript>
+<div class="pg" id="pg" aria-hidden="true"></div>
+<div class="sb" id="sb"><a class="btn p" href="#" data-go rel="noopener" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg><span data-i="play">Скачать APK</span></a></div>
+<script>
+(function(){
+var D={
+ru:{n:'Русский',c:'RU',ds:'Бесплатная игра для Android про перепродажу телефонов: открывай кейсы, чини, прошивай и выгодно продавай.',skip:'К возможностям',b1:'Бесплатно',b2:'Android',b3:'Перепродажа телефонов',h1:'Купи.',h2:'Почини.',h3:'Продай.',sub:'Игра про флип телефонов: открывай кейсы, прошивай, паяй платы и выигрывай лоты на аукционе — без вложений.',play:'Скачать APK',feat:'Возможности',nt:'Версия 1.0 · Android · бесплатно',fh:'Что внутри',fq:'Вопросы',q1:'Игра правда бесплатная?',a1:'Да. Скачивание и игра без вложений.',q2:'Телефон ругается на установку?',a2:'Это обычно для APK не из магазина. Разреши установку из этого источника в настройках и повтори.',q3:'Как обновить игру?',a3:'Скачай новую версию кнопкой на этой странице и установи поверх старой.',q4:'Безопасно ли ставить APK?',a4:'Ставь файл только с этой страницы. Не принимай APK от посторонних и не открывай ссылки из чужих сообщений.',tuh:'Обучение',t1:'Установи APK',d1:'Скачай файл, разреши установку из неизвестных источников и открой игру.',t2:'Стартовый капитал',d2:'У тебя 20 000 ₽. Дни идут сами, а кнопка «След. день» перематывает время.',t3:'Купи выгодно',d3:'В объявлениях выбирай телефоны дешевле рынка и смотри на дефекты.',t4:'Почини в мастерской',d4:'Проверь IMEI, прошей или запаяй плату: рабочий телефон продаётся дороже.',t5:'Продай в диалогах',d5:'Торгуйся с покупателями и не называй коды из СМС — так действуют мошенники.',t6:'Следи за деньгами',d6:'Каждый день списываются аренда и налоги. Если денег не хватает ни на один телефон, наступает банкротство.',t7:'Расти дальше',d7:'Кейсы, кликер, бизнес, блог и задания дают бонусы и ускоряют рост.',hw:'Как это работает',s1t:'Купи',s1d:'Открывай кейсы и выкупай лоты на аукционе.',s2t:'Почини',s2d:'Прошивай и паяй, чтобы поднять цену.',s3t:'Продай',s3d:'Выставляй объявления и торгуйся с покупателями.',c1t:'Кейсы',c1d:'Открывай кейсы с телефонами и находи редкие модели с хорошей наценкой.',c2t:'Прошивка',c2d:'Возвращай «кирпичи» к жизни: прошитый аппарат стоит заметно дороже.',c3t:'Пайка плат',c3d:'Чини платы паяльником в мастерской и проверяй IMEI перед продажей.',c4t:'Аукцион',c4d:'Выкупай лоты на торгах, ремонтируй и перепродавай покупателям.',ct:'Начни с первого телефона',cp:'Бесплатно и без вложений.',co:'Скачать APK',fo:'Неофициальная игра, не связана с компанией Avito.',pp:'Политика конфиденциальности',tm:'Условия использования',ti:'AvitoTech — игра про перепродажу телефонов'},
+en:{n:'English',c:'EN',ds:'A free Android phone-flipping game: open cases, fix, flash and resell phones for profit.',skip:'Skip to features',b1:'Free',b2:'Android',b3:'Phone flipping',h1:'Buy.',h2:'Fix.',h3:'Sell.',sub:'A phone-flipping game: open cases, flash firmware, solder boards and win auction lots — no investment needed.',play:'Download APK',feat:'Features',nt:'Version 1.0 · Android · free',fh:'What’s inside',fq:'FAQ',q1:'Is the game really free?',a1:'Yes. Downloading and playing cost nothing.',q2:'Your phone blocks the install?',a2:'That’s normal for an APK from outside the store. Allow installs from this source in settings and retry.',q3:'How do I update?',a3:'Download the new version with the button on this page and install it over the old one.',q4:'Is it safe to install an APK?',a4:'Only install the file from this page. Never accept APKs from strangers or open links from unknown messages.',tuh:'Tutorial',t1:'Install the APK',d1:'Download the file, allow installs from unknown sources and open the game.',t2:'Starting capital',d2:'You start with 20,000 ₽. Days pass on their own, and “Next day” skips ahead.',t3:'Buy smart',d3:'In listings, pick phones cheaper than the market and check for defects.',t4:'Fix in the workshop',d4:'Check the IMEI, flash firmware or solder the board: a working phone sells for more.',t5:'Sell in chats',d5:'Haggle with buyers and never share SMS codes — that’s how scammers work.',t6:'Watch your money',d6:'Rent and taxes are charged every day. If you can’t afford any phone, you go bankrupt.',t7:'Keep growing',d7:'Cases, the clicker, business, blog and quests give bonuses and speed up growth.',hw:'How it works',s1t:'Buy',s1d:'Open cases and win lots at auction.',s2t:'Fix',s2d:'Flash and solder to raise the price.',s3t:'Sell',s3d:'Post listings and haggle with buyers.',c1t:'Cases',c1d:'Open cases with phones and find rare models with a great margin.',c2t:'Firmware',c2d:'Revive bricked devices — a flashed phone sells for much more.',c3t:'Board soldering',c3d:'Repair boards in the workshop and check the IMEI before selling.',c4t:'Auction',c4d:'Win lots at auction, fix them up and resell to buyers.',ct:'Start with your first phone',cp:'Free, no investment needed.',co:'Download APK',fo:'Unofficial game, not affiliated with Avito.',pp:'Privacy policy',tm:'Terms of use',ti:'AvitoTech — a phone flipping game'},
+uk:{n:'Українська',c:'UK',ds:'Безкоштовна гра для Android про перепродаж телефонів: відкривай кейси, лагодь, прошивай і вигідно продавай.',skip:'До можливостей',b1:'Безкоштовно',b2:'Android',b3:'Перепродаж телефонів',h1:'Купи.',h2:'Полагодь.',h3:'Продай.',sub:'Гра про фліп телефонів: відкривай кейси, прошивай, паяй плати та вигравай лоти на аукціоні — без вкладень.',play:'Завантажити APK',feat:'Можливості',nt:'Версія 1.0 · Android · безкоштовно',fh:'Що всередині',fq:'Питання',q1:'Гра справді безкоштовна?',a1:'Так. Завантаження і гра без вкладень.',q2:'Телефон лається на встановлення?',a2:'Для APK не з магазину це звичайно. Дозволь встановлення з цього джерела в налаштуваннях і повтори.',q3:'Як оновити гру?',a3:'Завантаж нову версію кнопкою на цій сторінці й встанови поверх старої.',q4:'Чи безпечно ставити APK?',a4:'Став файл лише з цієї сторінки. Не приймай APK від сторонніх і не відкривай посилання з чужих повідомлень.',tuh:'Навчання',t1:'Встанови APK',d1:'Завантаж файл, дозволь встановлення з невідомих джерел і відкрий гру.',t2:'Стартовий капітал',d2:'У тебе 20 000 ₽. Дні йдуть самі, а кнопка «Наст. день» перемотує час.',t3:'Купуй вигідно',d3:'В оголошеннях обирай телефони дешевші за ринок і дивись на дефекти.',t4:'Полагодь у майстерні',d4:'Перевір IMEI, проший або запаяй плату: робочий телефон продається дорожче.',t5:'Продай у діалогах',d5:'Торгуйся з покупцями й не називай коди з SMS — так діють шахраї.',t6:'Стеж за грошима',d6:'Щодня списуються оренда та податки. Якщо грошей не вистачає на жоден телефон, настає банкрутство.',t7:'Рости далі',d7:'Кейси, клікер, бізнес, блог і завдання дають бонуси та прискорюють ріст.',hw:'Як це працює',s1t:'Купи',s1d:'Відкривай кейси та викуповуй лоти на аукціоні.',s2t:'Полагодь',s2d:'Прошивай і паяй, щоб підняти ціну.',s3t:'Продай',s3d:'Виставляй оголошення та торгуйся з покупцями.',c1t:'Кейси',c1d:'Відкривай кейси з телефонами та знаходь рідкісні моделі з гарною націнкою.',c2t:'Прошивка',c2d:'Повертай «цеглини» до життя: прошитий апарат коштує помітно дорожче.',c3t:'Пайка плат',c3d:'Лагодь плати паяльником у майстерні та перевіряй IMEI перед продажем.',c4t:'Аукціон',c4d:'Викуповуй лоти на торгах, ремонтуй і перепродавай покупцям.',ct:'Почни з першого телефона',cp:'Безкоштовно і без вкладень.',co:'Завантажити APK',fo:'Неофіційна гра, не пов’язана з компанією Avito.',pp:'Політика конфіденційності',tm:'Умови використання',ti:'AvitoTech — гра про перепродаж телефонів'},
+es:{n:'Español',c:'ES',ds:'Juego gratis para Android de reventa de móviles: abre cajas, repara, flashea y vende con ganancia.',skip:'Ir a las funciones',b1:'Gratis',b2:'Android',b3:'Reventa de móviles',h1:'Compra.',h2:'Repara.',h3:'Vende.',sub:'Un juego de reventa de móviles: abre cajas, flashea firmware, suelda placas y gana lotes en la subasta, sin invertir.',play:'Descargar APK',feat:'Funciones',nt:'Versión 1.0 · Android · gratis',fh:'Qué hay dentro',fq:'Preguntas',q1:'¿El juego es gratis de verdad?',a1:'Sí. Descargar y jugar no cuesta nada.',q2:'¿Tu móvil bloquea la instalación?',a2:'Es normal en un APK de fuera de la tienda. Permite instalar desde esta fuente en ajustes y reintenta.',q3:'¿Cómo actualizo?',a3:'Descarga la nueva versión con el botón de esta página e instálala sobre la anterior.',q4:'¿Es seguro instalar un APK?',a4:'Instala solo el archivo de esta página. No aceptes APK de desconocidos ni abras enlaces de mensajes ajenos.',tuh:'Tutorial',t1:'Instala el APK',d1:'Descarga el archivo, permite instalar desde fuentes desconocidas y abre el juego.',t2:'Capital inicial',d2:'Empiezas con 20 000 ₽. Los días pasan solos y «Día sig.» adelanta el tiempo.',t3:'Compra bien',d3:'En los anuncios elige móviles más baratos que el mercado y revisa los defectos.',t4:'Repara en el taller',d4:'Comprueba el IMEI, flashea o suelda la placa: un móvil que funciona se vende más caro.',t5:'Vende en los chats',d5:'Regatea con los compradores y no des códigos SMS: así actúan los estafadores.',t6:'Cuida tu dinero',d6:'Cada día se cobran alquiler e impuestos. Si no te alcanza para ningún móvil, quiebras.',t7:'Sigue creciendo',d7:'Cajas, clicker, negocio, blog y misiones dan bonos y aceleran el crecimiento.',hw:'Cómo funciona',s1t:'Compra',s1d:'Abre cajas y gana lotes en la subasta.',s2t:'Repara',s2d:'Flashea y suelda para subir el precio.',s3t:'Vende',s3d:'Publica anuncios y regatea con los compradores.',c1t:'Cajas',c1d:'Abre cajas con móviles y encuentra modelos raros con buen margen.',c2t:'Firmware',c2d:'Revive móviles bloqueados: uno flasheado se vende mucho más caro.',c3t:'Soldadura de placas',c3d:'Repara placas en el taller y comprueba el IMEI antes de vender.',c4t:'Subasta',c4d:'Gana lotes en la subasta, repáralos y revéndelos a los compradores.',ct:'Empieza con tu primer móvil',cp:'Gratis y sin inversión.',co:'Descargar APK',fo:'Juego no oficial, sin relación con la empresa Avito.',pp:'Política de privacidad',tm:'Condiciones de uso',ti:'AvitoTech — juego de reventa de móviles'}
+};
+var r=document.documentElement,$=function(i){return document.getElementById(i)},lw=$('lw'),lm=$('lm'),lb=$('lb');
+function get(k,d){try{return localStorage.getItem(k)||d}catch(e){return d}}
+function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+/* тема */
+var tl=$('tl'),td=$('td'),tc=$('tc');
+function theme(v,save){r.setAttribute('data-theme',v);tl.classList.toggle('on',v==='light');td.classList.toggle('on',v==='dark');tl.setAttribute('aria-pressed',v==='light');td.setAttribute('aria-pressed',v==='dark');tc.setAttribute('content',v==='light'?'#f2fbf6':'#08130e');if(save)put('avt-theme',v)}
+tl.onclick=function(){theme('light',1)};td.onclick=function(){theme('dark',1)};
+var st=get('avt-theme','');
+theme(st==='light'||st==='dark'?st:(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'),0);
+/* язык */
+var L=Object.keys(D);
+lm.innerHTML=L.map(function(k){return '<button type="button" role="menuitemradio" data-l="'+k+'" lang="'+k+'">'+D[k].n+'<small>'+D[k].c+'</small></button>'}).join('');
+function lang(k,save){if(!D[k])k='ru';var d=D[k];r.lang=k;document.title=d.ti;$('lc').textContent=d.c;
+ $('md').setAttribute('content',d.ds);$('ogt').setAttribute('content',d.ti);$('ogd').setAttribute('content',d.ds);
+ document.querySelectorAll('[data-i]').forEach(function(e){e.textContent=d[e.getAttribute('data-i')]});
+ lm.querySelectorAll('button').forEach(function(b){var on=b.dataset.l===k;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});if(save)put('lang',k)}
+function menu(o){lw.classList.toggle('open',o);lb.setAttribute('aria-expanded',o)}
+lb.onclick=function(e){e.stopPropagation();var o=!lw.classList.contains('open');menu(o);if(o){var b=lm.querySelector('.on')||lm.querySelector('button');b&&b.focus()}};
+lm.onclick=function(e){var b=e.target.closest('button');if(b){lang(b.dataset.l,1);menu(false);lb.focus()}};
+document.addEventListener('click',function(e){if(!lw.contains(e.target))menu(false)});
+document.addEventListener('keydown',function(e){
+ if(e.key==='Escape'&&lw.classList.contains('open')){menu(false);lb.focus()}
+ if(lw.classList.contains('open')&&(e.key==='ArrowDown'||e.key==='ArrowUp')){e.preventDefault();var bs=[].slice.call(lm.querySelectorAll('button')),i=bs.indexOf(document.activeElement);i=(i+(e.key==='ArrowDown'?1:-1)+bs.length)%bs.length;bs[i].focus()}});
+var saved=get('lang',''),nav=(navigator.language||'ru').slice(0,2);
+lang(D[saved]?saved:(D[nav]?nav:'ru'),0);
+/* скачивание */
+var GAME_URL='https://github.com/AvitoFlip/Game/releases/download/v1.1/avitoflip-v1.0.0-6.apk';
+document.querySelectorAll('a[data-go]').forEach(function(a){if(GAME_URL){a.href=GAME_URL;a.setAttribute('download','')}else a.addEventListener('click',function(e){e.preventDefault()})});
+/* подсветка карточек */
+document.querySelectorAll('.c').forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px')})});
+/* бренды */
+var M=['Apple','Samsung','Xiaomi','Google','Honor','Huawei','Realme','OnePlus'];$('mq').innerHTML=M.concat(M).map(function(m){return '<span>'+m+'</span>'}).join('');
+/* обучение: одна открытая карточка */
+var tus=document.querySelectorAll('.tu details');
+tus.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)tus.forEach(function(o){if(o!==d)o.open=false})})});
+/* прогресс и нижняя кнопка */
+var sb=$('sb'),pgb=$('pg'),ct=document.querySelector('.cta'),hr=document.querySelector('.hero .btn.p'),sbl=sb.querySelector('a'),tick=false;
+function sc(){tick=false;var h=document.documentElement.scrollHeight-innerHeight,y=scrollY;pgb.style.width=(h>0?Math.min(100,y/h*100):0)+'%';var a=hr.getBoundingClientRect().bottom<0,b=ct.getBoundingClientRect().top<innerHeight-40,on=a&&!b;sb.classList.toggle('on',on);sbl.tabIndex=on?0:-1}
+function req(){if(!tick){tick=true;requestAnimationFrame(sc)}}
+addEventListener('scroll',req,{passive:true});addEventListener('resize',req);sc();
+/* появление при прокрутке */
+var rv=document.querySelectorAll('.rv');
+function done(t){setTimeout(function(){t.classList.remove('rv','in');t.style.transitionDelay=''},1100)}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');done(x.target);io.unobserve(x.target)}})},{threshold:.12});rv.forEach(function(e,i){e.style.transitionDelay=(i%4)*70+'ms';io.observe(e)})}else rv.forEach(function(e){e.classList.add('in')});
+})();
+</script>
+</body>
+</html>
